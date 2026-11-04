@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Coordinator | Irfan Home Care Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Irfan Home Care Service: coordinator</h1>
+    <a href="/" class="link">View public site</a>
+  </header>
+
+  <main class="layout">
+    <section aria-labelledby="req-title">
+      <div class="head">
+        <h2 id="req-title">Requests</h2>
+        <button type="button" id="refresh" class="btn small">Refresh</button>
+      </div>
+      <div class="tabs" id="tabs" role="tablist" aria-label="Request status"></div>
+      <p class="error" id="error" role="alert"></p>
+      <div id="list" class="list"></div>
+    </section>
+
+    <aside aria-labelledby="doc-title">
+      <h2 id="doc-title">Doctors</h2>
+      <div id="doctors"></div>
+      <form id="doctor-form" class="doctor-form">
+        <h3>Add a doctor</h3>
+        <label for="d-name">Name</label>
+        <input id="d-name" type="text" maxlength="80" required>
+        <label for="d-phone">Phone (optional)</label>
+        <input id="d-phone" type="tel" maxlength="20">
+        <button type="submit" class="btn">Add doctor</button>
+      </form>
+      <p class="note">No payments are handled here. This page holds people's health details: log out of the browser on shared computers.</p>
+    </aside>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>

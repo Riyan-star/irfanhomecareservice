@@ -1,0 +1,17 @@
+{
+  "name": "irfan-home-care-service",
+  "version": "1.0.0",
+  "description": "Irfan Home Care Service: community care requests, ambulance and medic calls, and a coordinator dashboard.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}
