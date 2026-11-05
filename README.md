@@ -34,14 +34,19 @@ data/db.json     requests and doctors (created automatically)
 .env             your password (never share or upload this)
 ```
 
-## Putting it online
+## Deploy for free
 
-GitHub Pages cannot run the backend. Use a host that runs Node.js, for example Render, Railway, Fly.io or a small VPS.
+This app can use PostgreSQL in production and keeps the JSON file for local development. The included `render.yaml` configures a free Render web service. A free Supabase PostgreSQL project can provide the database; free plans have limits and may pause when inactive, so check the current terms before relying on them.
 
-- Set `ADMIN_PASSWORD` (and `ADMIN_USER`) as environment variables on the host.
-- Use HTTPS (hosts above provide it). The dashboard login is sent with every request, so never use it over plain HTTP on the internet.
-- Keep `data/` on a persistent disk or volume, or the saved requests are lost when the host restarts.
-- Back up `data/db.json` regularly.
+1. Push this project to a **private** GitHub repository. Do not add `.env` or `data/db.json`; both are ignored by Git.
+2. Create a PostgreSQL project in Supabase. Copy its connection string from the database settings. Use a session-pooler connection string if the direct connection is not reachable from Render.
+3. In Render, choose **New + > Blueprint**, connect the private repository, and apply the `render.yaml` blueprint.
+4. Enter the requested `ADMIN_PASSWORD` and `DATABASE_URL` values in Render. Make the admin password long and unique. Do not put either secret in GitHub or in frontend code.
+5. After deployment, open the Render URL. The public website is at `/`; the coordinator dashboard is at `/admin/`.
+
+The production server refuses to start without `DATABASE_URL`, so it will not silently store live requests on Render's temporary filesystem. Existing records in local `data/db.json` are **not** copied to the hosted database; the hosted database starts with the default doctor. Keep the local file private and make a deliberate, secure migration only if those records must be retained.
+
+Requests include personal and care-related information. A free hosting plan is not a guarantee of suitability for sensitive health data. Before accepting real requests, review the host/database terms, access controls, backups, retention, and applicable privacy requirements. GitHub Pages alone cannot run this backend.
 
 ## Privacy
 
